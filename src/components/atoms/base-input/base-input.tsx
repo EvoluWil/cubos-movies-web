@@ -28,7 +28,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
 
       <input
         type="text"
-        className={`font-roboto text-md text-mauve-950 bg-mauve-50 placeholder:text-mauve-700 border border-mauve-400 w-full h-11 rounded px-3 focus:border-brand-700 focus:caret-brand-700 ${
+        className={`font-roboto text-base text-mauve-950 bg-mauve-50 placeholder:text-mauve-700 border border-mauve-400 w-full h-11 rounded px-3 focus:border-brand-700 focus:caret-brand-700 ${
           errorMessage ? 'border-error-500' : ''
         } ${icon ? 'pr-12' : ''} ${className}`}
         placeholder={label}

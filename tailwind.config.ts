@@ -50,6 +50,7 @@ export default {
       },
       fontSize: {
         '2xs': '0.625rem',
+        xs: '0.8rem',
       },
     },
   },

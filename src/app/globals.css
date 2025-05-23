@@ -124,3 +124,7 @@ textarea:focus, input:focus, select:focus {
   outline: 0;
 }
 
+.banner-shadow-gradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 50%, #000000 100%);
+}
+
