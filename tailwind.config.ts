@@ -39,5 +39,14 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-montserrat)', 'sans-serif'],
+        montserrat: ['var(--font-montserrat)', 'sans-serif'],
+        roboto: ['var(--font-roboto)', 'sans-serif'],
+      },
+    },
+  },
   plugins: [customColors],
 } satisfies Config;
