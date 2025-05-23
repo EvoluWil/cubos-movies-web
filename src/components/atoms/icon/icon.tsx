@@ -3,6 +3,7 @@ import LtiChevronLeft from '@/assets/icons/chevron_left.svg';
 import LtiChevronRight from '@/assets/icons/chevron_right.svg';
 import LtiChevronUp from '@/assets/icons/chevron_up.svg';
 import LtiFilter from '@/assets/icons/filter.svg';
+import LtiInfo from '@/assets/icons/info.svg';
 import LtiMoon from '@/assets/icons/moon.svg';
 import LtiSearch from '@/assets/icons/search.svg';
 import LtiSun from '@/assets/icons/sun.svg';
@@ -15,7 +16,8 @@ export type IconName =
   | 'filter'
   | 'moon'
   | 'search'
-  | 'sun';
+  | 'sun'
+  | 'info';
 
 type IconProps = {
   name: IconName;
@@ -36,6 +38,7 @@ const iconsMap: Record<
   moon: LtiMoon,
   search: LtiSearch,
   sun: LtiSun,
+  info: LtiInfo,
 };
 
 export const Icon: React.FC<IconProps> = ({ name, className }) => {

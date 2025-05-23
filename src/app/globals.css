@@ -55,6 +55,8 @@
   --mauve_alpha-800: #0500197D;
   --mauve_alpha-900: #0400119C;
   --mauve_alpha-950: #020008E0;
+
+  --error-500: #FF4D4F;
 }
 
 .dark {
@@ -109,8 +111,16 @@
   --mauve_alpha-800: #ECE9FD7C;
   --mauve_alpha-900: #F5F1FFB7;
   --mauve_alpha-950: #FDFDFFEF;
+
+  --error-500: #FF4D4F;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+

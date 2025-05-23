@@ -3,13 +3,15 @@ import plugin from 'tailwindcss/plugin';
 
 const customColors = plugin(({ addUtilities }) => {
   const shades = [10, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-  const colorGroups = ['brand', 'brand_alpha', 'mauve', 'mauve_alpha'];
+  const colorGroups = ['brand', 'brand_alpha', 'mauve', 'mauve_alpha', 'error'];
 
   const properties = {
     bg: 'background-color',
     text: 'color',
     border: 'border-color',
     shadow: 'box-shadow',
+    outline: 'outline-color',
+    caret: 'caret-color',
   };
 
   const utilities: { [key: string]: Record<string, string> } = {};
