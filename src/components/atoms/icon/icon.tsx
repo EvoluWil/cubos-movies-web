@@ -6,6 +6,7 @@ import LtiFilter from '@/assets/icons/filter.svg';
 import LtiInfo from '@/assets/icons/info.svg';
 import LtiMoon from '@/assets/icons/moon.svg';
 import LtiSearch from '@/assets/icons/search.svg';
+import LtiSpinner from '@/assets/icons/spinner.svg';
 import LtiSun from '@/assets/icons/sun.svg';
 
 export type IconName =
@@ -17,6 +18,7 @@ export type IconName =
   | 'moon'
   | 'search'
   | 'sun'
+  | 'spinner'
   | 'info';
 
 type IconProps = {
@@ -39,6 +41,7 @@ const iconsMap: Record<
   search: LtiSearch,
   sun: LtiSun,
   info: LtiInfo,
+  spinner: LtiSpinner,
 };
 
 export const Icon: React.FC<IconProps> = ({ name, className }) => {

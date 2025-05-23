@@ -48,6 +48,9 @@ export default {
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
         roboto: ['var(--font-roboto)', 'sans-serif'],
       },
+      fontSize: {
+        '2xs': '0.625rem',
+      },
     },
   },
   plugins: [customColors],

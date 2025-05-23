@@ -1,8 +1,34 @@
-import Image from "next/image";
+'use client';
+
+import { Icon } from '@/components/atoms/icon/icon';
+import { Button } from '@/components/molecules/button/button';
+import { DebounceInput } from '@/components/molecules/debounce-input/debaunce-input';
+import { TextInput } from '@/components/molecules/text-input/text-input';
+import { yupResolver } from '@hookform/resolvers/yup';
+import Image from 'next/image';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+
+const validator = yup.object({
+  textInput: yup.string().required('Campo obrigatório'),
+  search: yup.string().required('Campo obrigatório'),
+});
 
 export default function Home() {
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      textInput: '',
+      search: '',
+    },
+    resolver: yupResolver(validator),
+  });
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="bg-black grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
@@ -14,7 +40,7 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
-            Get started by editing{" "}
+            Get started by editing{' '}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               src/app/page.tsx
             </code>
@@ -48,6 +74,31 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+        <TextInput
+          label="TextInput"
+          placeholder="Enter text"
+          control={control}
+          name="textInput"
+          icon="search"
+        />
+        <DebounceInput
+          label="search"
+          placeholder="Enter text"
+          onChangeValue={(value) => console.log(value)}
+        />
+        <Icon name="sun" className="text-white w-10 h-10" />
+        <Button icon="moon" />
+        <Button icon="sun" variant="secondary" />
+        <Button onClick={handleSubmit(onSubmit)}>Primário/Default</Button>
+        <Button>Primário/Hover</Button>
+        <Button>Primário/Active</Button>
+        <Button disabled>Primário/Disabled</Button>
+        <Button variant="secondary">Primário/Default</Button>
+        <Button variant="secondary">Primário/Hover</Button>
+        <Button variant="secondary">Primário/Active</Button>
+        <Button variant="secondary" disabled>
+          Primário/Disabled
+        </Button>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a

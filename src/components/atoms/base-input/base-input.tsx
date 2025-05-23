@@ -1,19 +1,17 @@
 import { Icon, IconName } from '@/components/atoms/icon/icon';
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, JSX } from 'react';
 
 export type BaseInputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
-  loading?: boolean;
   icon?: IconName;
-  iconClassName?: string;
+  iconElement?: JSX.Element;
   errorMessage?: string;
 };
 
 export const BaseInput: React.FC<BaseInputProps> = ({
   label,
-  loading = false,
   className,
-  iconClassName,
+  iconElement,
   icon,
   errorMessage,
   ...inputBaseProps
@@ -34,23 +32,22 @@ export const BaseInput: React.FC<BaseInputProps> = ({
           errorMessage ? 'border-error-500' : ''
         } ${icon ? 'pr-12' : ''} ${className}`}
         placeholder={label}
-        disabled={!!loading}
         {...inputBaseProps}
       />
       {errorMessage && (
-        <span className="text-error-500 text-xs flex items-center gap-1">
-          <Icon name="info" className="w-4 h-4 -mt-0.5" /> {errorMessage}
+        <span className="text-error-500 text-2xs flex items-center gap-1">
+          <Icon name="info" className="w-3 h-3 -mt-[1.5px]" /> {errorMessage}
         </span>
       )}
 
-      {icon && (
+      {(icon || iconElement) && (
         <div
-          className={`absolute end-4 bottom-2.5 flex items-center ps-4 pointer-events-none`}
+          className={`absolute text-mauve-900 end-4 bottom-2.5 flex items-center ps-4 pointer-events-none ${
+            errorMessage && 'bottom-8 text-error-500'
+          }`}
         >
-          <Icon
-            name={icon}
-            className={`w-6 h-6 text-mauve-900 ${iconClassName}`}
-          />
+          {!!icon && <Icon name={icon} className={`w-6 h-6 `} />}
+          {!!iconElement && iconElement}
         </div>
       )}
     </div>
