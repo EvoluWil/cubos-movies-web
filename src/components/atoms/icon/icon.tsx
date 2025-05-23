@@ -7,7 +7,7 @@ import LtiMoon from '@/assets/icons/moon.svg';
 import LtiSearch from '@/assets/icons/search.svg';
 import LtiSun from '@/assets/icons/sun.svg';
 
-type IconName =
+export type IconName =
   | 'chevron-down'
   | 'chevron-left'
   | 'chevron-right'
