@@ -65,10 +65,25 @@ export default {
         sans: ['var(--font-montserrat)', 'sans-serif'],
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
         roboto: ['var(--font-roboto)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
       },
       fontSize: {
         '2xs': '0.625rem',
         xs: '0.8rem',
+      },
+      height: {
+        '18': '72px',
+      },
+      container: {
+        center: true,
+        padding: '1rem',
+        screens: {
+          sm: '100%',
+          md: '100%',
+          lg: '100%',
+          xl: '100%',
+          '2xl': 'calc(1366px + 2rem)',
+        },
       },
     },
   },
