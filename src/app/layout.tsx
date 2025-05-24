@@ -1,3 +1,4 @@
+import { Footer } from '@/components/organisms/footer/footer';
 import { Header } from '@/components/organisms/header.tsx/header';
 import { THEME_STORAGE_KEY, ThemeEnum } from '@/constants/theme';
 import type { Metadata } from 'next';
@@ -41,9 +42,12 @@ export default async function RootLayout({
       lang="pt-BR"
       className={`${montserrat.variable} ${roboto.variable} ${inter.variable} antialiased`}
     >
-      <body className={`font-sans bg-mauve-10 ${theme}`}>
+      <body
+        className={`font-sans bg-mauve-10 ${theme} flex flex-col min-h-screen`}
+      >
         <Header />
-        {children}
+        <div className="container">{children}</div>
+        <Footer />
       </body>
     </html>
   );
