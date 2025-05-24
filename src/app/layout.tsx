@@ -1,3 +1,4 @@
+import { BgImageGradient } from '@/components/atoms/bg-image-gradient/bg-image-gradient';
 import { Footer } from '@/components/organisms/footer/footer';
 import { Header } from '@/components/organisms/header.tsx/header';
 import { THEME_STORAGE_KEY, ThemeEnum } from '@/constants/theme';
@@ -46,7 +47,11 @@ export default async function RootLayout({
         className={`font-sans bg-mauve-10 ${theme} flex flex-col min-h-screen`}
       >
         <Header />
-        <div className="container">{children}</div>
+
+        <div className="bg-mauve-10 relative">
+          <BgImageGradient />
+          <div className="relative z-10">{children}</div>
+        </div>
         <Footer />
       </body>
     </html>

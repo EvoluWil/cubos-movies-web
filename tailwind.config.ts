@@ -85,6 +85,10 @@ export default {
           '2xl': 'calc(1366px + 2rem)',
         },
       },
+      backgroundImage: {
+        'bg-image-gradient':
+          'linear-gradient(180deg, rgb(var(--mauve-10)) 0%, rgba(var(--mauve-10) / 0.46) 49.48%, rgb(var(--mauve-10)) 100%)',
+      },
     },
   },
   plugins: [customColors],
