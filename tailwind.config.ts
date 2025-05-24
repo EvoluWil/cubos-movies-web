@@ -19,14 +19,32 @@ const customColors = plugin(({ addUtilities }) => {
   for (const group of colorGroups) {
     for (const shade of shades) {
       for (const [prefix, cssProp] of Object.entries(properties)) {
-        const className = `.${prefix}-${group}-${shade}`;
+        const baseClass = `.${prefix}-${group}-${shade}`;
+        const variable = `--${group}-${shade}`;
 
-        utilities[className] = {
-          [cssProp]:
-            cssProp === 'box-shadow'
-              ? `0 0 0 3px var(--${group}-${shade})`
-              : `var(--${group}-${shade})`,
-        };
+        if (cssProp === 'box-shadow') {
+          utilities[baseClass] = {
+            [cssProp]: `0 0 0 3px rgb(var(${variable}))`,
+          };
+        } else {
+          if (group?.includes('alpha')) {
+            utilities[baseClass] = {
+              [cssProp]: `rgb(var(${variable}))`,
+            };
+          } else {
+            utilities[baseClass] = {
+              [cssProp]: `rgb(var(${variable}) / 1)`, // Opacidade 100%
+            };
+          }
+
+          // Adiciona variantes com opacidade
+          for (let opacity = 0; opacity <= 100; opacity += 5) {
+            const classOpacity = `.${prefix}-${group}-${shade}\\/${opacity}`;
+            utilities[classOpacity] = {
+              [cssProp]: `rgb(var(${variable}) / ${opacity}%)`,
+            };
+          }
+        }
       }
     }
   }
