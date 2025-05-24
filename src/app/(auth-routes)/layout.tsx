@@ -1,12 +1,11 @@
-import { authOptions } from '@/config/auth/auth';
-import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { PropsWithChildren } from 'react';
+import { getUserSession } from '../utils/session';
 
 export default async function AuthLayout({ children }: PropsWithChildren) {
-  const session = await getServerSession(authOptions);
+  const user = await getUserSession();
 
-  if (session) {
+  if (user) {
     return redirect('/movies');
   }
 
