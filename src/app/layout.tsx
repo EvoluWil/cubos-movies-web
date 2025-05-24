@@ -5,6 +5,7 @@ import { THEME_STORAGE_KEY, ThemeEnum } from '@/constants/theme';
 import type { Metadata } from 'next';
 import { Inter, Montserrat, Roboto } from 'next/font/google';
 import { cookies } from 'next/headers';
+import { ToastContainer } from 'react-toastify';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -46,11 +47,11 @@ export default async function RootLayout({
       <body
         className={`font-sans bg-mauve-10 ${theme} flex flex-col min-h-screen`}
       >
+        <ToastContainer />
         <Header />
-
         <div className="bg-mauve-10 relative">
           <BgImageGradient />
-          <div className="relative z-10">{children}</div>
+          <div className="relative h-full z-10 p-4">{children}</div>
         </div>
         <Footer />
       </body>

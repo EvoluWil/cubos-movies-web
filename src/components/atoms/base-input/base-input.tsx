@@ -1,11 +1,17 @@
 import { Icon, IconName } from '@/components/atoms/icon/icon';
 import { InputHTMLAttributes, JSX } from 'react';
 
+export type BaseInputValidators = {
+  regex: RegExp;
+  message: string;
+};
+
 export type BaseInputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
   icon?: IconName;
   iconElement?: JSX.Element;
   errorMessage?: string;
+  validators?: BaseInputValidators[];
 };
 
 export const BaseInput: React.FC<BaseInputProps> = ({
@@ -14,12 +20,25 @@ export const BaseInput: React.FC<BaseInputProps> = ({
   iconElement,
   icon,
   errorMessage,
+  validators,
   ...inputBaseProps
 }) => {
+  const getValidatorColor = (isValid: boolean) => {
+    if (isValid) {
+      return 'text-success-500';
+    }
+
+    if (!errorMessage) {
+      return 'text-mauve-800';
+    }
+
+    return 'text-error-500';
+  };
+
   return (
     <div className="flex flex-col gap-2 w-full relative">
       <label
-        className={`font-roboto text-mauve-950 text-xs ${
+        className={`font-roboto text-mauve-950 text-xs leading-base font-bold ${
           errorMessage ? 'text-error-500' : ''
         }`}
       >
@@ -34,9 +53,32 @@ export const BaseInput: React.FC<BaseInputProps> = ({
         placeholder={label}
         {...inputBaseProps}
       />
-      {errorMessage && (
+      {errorMessage && !validators && (
         <span className="text-error-500 text-2xs flex items-center gap-1">
           <Icon name="info" className="w-3 h-3 -mt-[1.5px]" /> {errorMessage}
+        </span>
+      )}
+
+      {validators && (
+        <span
+          className={`text-2xs flex flex-col gap-1 mt-1 ${
+            !errorMessage ? '!text-mauve-500' : ''
+          }`}
+        >
+          {validators?.map((validator, index) => {
+            const isValid = validator.regex.test(`${inputBaseProps.value}`);
+            return (
+              <span
+                key={index}
+                className={`flex items-start gap-1 ${getValidatorColor(
+                  isValid,
+                )}`}
+              >
+                <Icon name="info" className="w-3 h-3 mt-[1.5px]" />
+                <span>{validator.message}</span>
+              </span>
+            );
+          })}
         </span>
       )}
 

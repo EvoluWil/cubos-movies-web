@@ -1,3 +1,9 @@
+import { SignInForm } from './sign-in.form';
+
 export default function SignInPage() {
-  return <h1>Sign in</h1>;
+  return (
+    <div className="flex flex-col items-center h-total justify-center my-auto">
+      <SignInForm />
+    </div>
+  );
 }

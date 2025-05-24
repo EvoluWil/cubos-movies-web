@@ -3,7 +3,14 @@ import plugin from 'tailwindcss/plugin';
 
 const customColors = plugin(({ addUtilities }) => {
   const shades = [10, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-  const colorGroups = ['brand', 'brand_alpha', 'mauve', 'mauve_alpha', 'error'];
+  const colorGroups = [
+    'brand',
+    'brand_alpha',
+    'mauve',
+    'mauve_alpha',
+    'error',
+    'success',
+  ];
 
   const properties = {
     bg: 'background-color',
@@ -72,6 +79,10 @@ export default {
       },
       height: {
         '18': '72px',
+        total: 'calc(100vh - 178px)',
+      },
+      lineHeight: {
+        base: '15px',
       },
       container: {
         center: true,

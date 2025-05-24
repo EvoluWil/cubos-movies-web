@@ -5,6 +5,7 @@ type ButtonProps = {
   icon?: IconName;
   className?: string;
   variant?: 'primary' | 'secondary';
+  loading?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
@@ -13,6 +14,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   className = '',
   variant = 'primary',
   disabled = false,
+  loading = false,
   ...rest
 }) => {
   const variantClasses = {
@@ -33,15 +35,30 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
     <button
       className={`flex items-center justify-center font-roboto h-11 px-5 text-base rounded-sm cursor-pointer disabled:cursor-not-allowed transition-all transform ${variantClasses[variant]} ${className}`}
       {...rest}
-      disabled={disabled}
+      disabled={disabled || loading}
     >
-      {icon && (
+      {loading && (
         <Icon
-          name={icon}
-          className={`!w-6 !h-6 ${children ? 'ml-2' : ''} ${getIconColor()}`}
+          name="spinner"
+          className={`!w-6 !h-6 animate-spin ${
+            children ? 'ml-2' : ''
+          } ${getIconColor()}`}
         />
       )}
-      {children}
+
+      {!loading && (
+        <>
+          {icon && (
+            <Icon
+              name={icon}
+              className={`!w-6 !h-6 ${
+                children ? 'ml-2' : ''
+              } ${getIconColor()}`}
+            />
+          )}
+          {children}
+        </>
+      )}
     </button>
   );
 };

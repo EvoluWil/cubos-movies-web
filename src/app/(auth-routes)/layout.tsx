@@ -9,5 +9,5 @@ export default async function AuthLayout({ children }: PropsWithChildren) {
     return redirect('/movies');
   }
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 }
