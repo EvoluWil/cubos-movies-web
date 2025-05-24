@@ -33,11 +33,10 @@ const customColors = plugin(({ addUtilities }) => {
             };
           } else {
             utilities[baseClass] = {
-              [cssProp]: `rgb(var(${variable}) / 1)`, // Opacidade 100%
+              [cssProp]: `rgb(var(${variable}) / 1)`,
             };
           }
 
-          // Adiciona variantes com opacidade
           for (let opacity = 0; opacity <= 100; opacity += 5) {
             const classOpacity = `.${prefix}-${group}-${shade}\\/${opacity}`;
             utilities[classOpacity] = {
@@ -86,8 +85,11 @@ export default {
         },
       },
       backgroundImage: {
-        'bg-image-gradient':
-          'linear-gradient(180deg, rgb(var(--mauve-10)) 0%, rgba(var(--mauve-10) / 0.46) 49.48%, rgb(var(--mauve-10)) 100%)',
+        'image-gradient': `linear-gradient(
+            180deg,
+            rgb(var(--mauve-10)) 0%,
+            rgb(var(--mauve-10) / 46%) 49.48%,
+            rgb(var(--mauve-10)) 100%)`,
       },
     },
   },

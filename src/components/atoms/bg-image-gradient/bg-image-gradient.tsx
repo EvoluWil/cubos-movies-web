@@ -12,7 +12,7 @@ export const BgImageGradient = () => {
           className="object-cover object-center"
         />
       </div>
-      <div className="absolute inset-0 bg-bg-image-gradient h-[50vh] w-screen overflow-hidden" />
+      <div className="absolute inset-0 bg-image-gradient h-[50vh] w-screen overflow-hidden" />
     </>
   );
 };
