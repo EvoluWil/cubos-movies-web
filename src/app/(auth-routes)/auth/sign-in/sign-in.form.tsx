@@ -1,5 +1,6 @@
 'use client';
 
+import { Title } from '@/components/atoms/title/title';
 import { Button } from '@/components/molecules/button/button';
 import { TextInput } from '@/components/molecules/text-input/text-input';
 import Link from 'next/link';
@@ -12,6 +13,19 @@ export const SignInForm = () => {
       className="flex flex-col gap-4 p-4 bg-mauve-100 rounded w-full max-w-[412px]"
       onSubmit={handleSignIn}
     >
+      <Title
+        title={
+          <>
+            Boas vindas ao
+            <span className="text-2xl font-bold text-brand-700">
+              {' '}
+              Cubos Movies!
+            </span>
+          </>
+        }
+        subtitle="Digite suas credenciais para acessar sua conta"
+      />
+
       <TextInput
         label="Nome/E-email"
         name="email"

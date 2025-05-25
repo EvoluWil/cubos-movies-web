@@ -1,10 +1,11 @@
 'use client';
 
+import { Title } from '@/components/atoms/title/title';
 import { Button } from '@/components/molecules/button/button';
 import { TextInput } from '@/components/molecules/text-input/text-input';
+import { passwordValidations } from '@/validators/password-validator';
 import Link from 'next/link';
 import { useSignUp } from './sign-up.hook';
-import { signUpPasswordValidations } from './sign-up.schema';
 
 export const SignUpForm = () => {
   const { control, loading, handleSignUp } = useSignUp();
@@ -14,6 +15,11 @@ export const SignUpForm = () => {
       className="flex flex-col gap-4 p-4 bg-mauve-100 rounded w-full max-w-[412px]"
       onSubmit={handleSignUp}
     >
+      <Title
+        title="Criar conta"
+        subtitle="Digite suas informações para se cadastrar"
+      />
+
       <TextInput
         label="Nome"
         name="profile.name"
@@ -36,7 +42,7 @@ export const SignUpForm = () => {
         type="password"
         disabled={loading}
         control={control}
-        validators={signUpPasswordValidations}
+        validators={passwordValidations}
       />
 
       <TextInput

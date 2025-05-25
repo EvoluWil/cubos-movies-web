@@ -1,3 +1,5 @@
+import { ResetPasswordFormDto } from '@/app/(auth-routes)/auth/reset-password/[token]/reset-password.schema';
+import { SignUpFormDto } from '@/app/(auth-routes)/auth/sign-up/sign-up.schema';
 import { api } from '@/config/api/api';
 import { User } from '@/types/user.type';
 import { signIn } from 'next-auth/react';
@@ -21,8 +23,8 @@ class AuthService {
     return data;
   }
 
-  async signUp(signUpForm: any) {
-    const { data } = await api.post<User>('/auth/sign-up', signUpForm);
+  async signUp(signUpFormDto: SignUpFormDto) {
+    const { data } = await api.post<User>('/auth/sign-up', signUpFormDto);
     return data;
   }
 
@@ -40,10 +42,13 @@ class AuthService {
     return data;
   }
 
-  async recoveryPassword(token: string, recoveryPasswordFormData: any) {
+  async resetPassword(
+    token: string,
+    resetPasswordFormDto: ResetPasswordFormDto,
+  ) {
     const { data } = await api.post(
-      `/auth/recovery-password/${token}`,
-      recoveryPasswordFormData,
+      `/auth/reset-password/${token}`,
+      resetPasswordFormDto,
     );
 
     return data;
@@ -55,7 +60,7 @@ class AuthService {
     return data;
   }
 
-  async validateEmail(code: string, email: string) {
+  async validateCode(code: string, email: string) {
     const { data } = await api.post<{ token: string }>(
       `/auth/validate-code/${code}`,
       {
