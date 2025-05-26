@@ -33,7 +33,7 @@ export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
 
   return (
     <button
-      className={`flex items-center justify-center font-roboto h-11 px-5 text-base rounded-sm cursor-pointer disabled:cursor-not-allowed transition-all transform ${variantClasses[variant]} ${className}`}
+      className={`flex items-center whitespace-nowrap justify-center font-roboto h-11 px-5 text-base rounded-sm cursor-pointer disabled:cursor-not-allowed transition-all transform ${variantClasses[variant]} ${className}`}
       {...rest}
       disabled={disabled || loading}
     >

@@ -21,6 +21,7 @@ export const authOptions: NextAuthOptions = {
         if (result) {
           return {
             ...result.user,
+            token: result.token,
           };
         }
 

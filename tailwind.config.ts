@@ -67,6 +67,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: '420px',
+      },
       fontFamily: {
         sans: ['var(--font-montserrat)', 'sans-serif'],
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
@@ -101,6 +104,20 @@ export default {
             rgb(var(--mauve-10)) 0%,
             rgb(var(--mauve-10) / 46%) 49.48%,
             rgb(var(--mauve-10)) 100%)`,
+      },
+      keyframes: {
+        'slide-up-fade': {
+          '0%': { transform: 'translateY(50px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+      },
+      animation: {
+        'slide-up-fade': 'slide-up-fade 0.5s ease-out forwards',
+        'slide-in-right': 'slide-in-right 0.5s ease-out forwards',
       },
     },
   },

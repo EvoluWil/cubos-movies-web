@@ -1,4 +1,5 @@
 import { Genre } from '@/types/genre.type';
+import { GenreCard } from '../card-genre/card-ganre';
 
 type ListGenresProps = {
   genres: Genre[];
@@ -10,12 +11,7 @@ export const ListGenres = ({ genres }: ListGenresProps) => {
       <h3 className="text-sm text-brand-950 font-bold ">Gêneros</h3>
       <div className="flex flex-wrap gap-2 items-center">
         {genres.map((genre) => (
-          <p
-            key={genre.id}
-            className="bg-brand_alpha-100 text-xs text-mauve-950 font-semibold backdrop-blur-[2px] p-2 rounded-sm"
-          >
-            {genre.name}
-          </p>
+          <GenreCard name={genre.name} key={genre.id} />
         ))}
       </div>
     </div>

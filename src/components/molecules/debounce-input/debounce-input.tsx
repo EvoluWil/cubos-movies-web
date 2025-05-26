@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+'use client';
+
 import {
   BaseInput,
   BaseInputProps,
@@ -30,7 +33,7 @@ export const DebounceInput: React.FC<DebounceInputProps> = ({
     if (onChangeValue) {
       onChangeValue(debouncedValue);
     }
-  }, [debouncedValue, onChangeValue]);
+  }, [debouncedValue]);
 
   const isLoading = loading || (!!value && value !== debouncedValue);
   return (

@@ -1,28 +1,27 @@
 import { Icon, IconName } from '@/components/atoms/icon/icon';
-import { InputHTMLAttributes, JSX } from 'react';
+import { JSX, TextareaHTMLAttributes } from 'react';
 
-export type BaseInputValidators = {
+export type BaseTextareaValidators = {
   regex: RegExp;
   message: string;
 };
 
-export type BaseInputProps = InputHTMLAttributes<HTMLInputElement> & {
+export type BaseTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label?: string;
   icon?: IconName;
   iconElement?: JSX.Element;
   errorMessage?: string;
-  validators?: BaseInputValidators[];
-  mask?: string;
+  validators?: BaseTextareaValidators[];
 };
 
-export const BaseInput: React.FC<BaseInputProps> = ({
+export const BaseTextarea: React.FC<BaseTextareaProps> = ({
   label,
   className,
   iconElement,
   icon,
   errorMessage,
   validators,
-  ...inputBaseProps
+  ...textareaBaseProps
 }) => {
   const getValidatorColor = (isValid: boolean) => {
     if (isValid) {
@@ -48,14 +47,18 @@ export const BaseInput: React.FC<BaseInputProps> = ({
         </label>
       )}
 
-      <input
-        type="text"
-        className={`font-roboto text-base text-mauve-950 bg-mauve-50 placeholder:text-mauve-700 border border-mauve-400 w-full h-11 rounded px-3 focus:border-brand-700 focus:caret-brand-700 ${
+      <textarea
+        className={`font-roboto text-base text-mauve-950 bg-mauve-50 placeholder:text-mauve-700 border border-mauve-400 w-full rounded px-3 py-2 resize-none focus:border-brand-700 focus:caret-brand-700 ${
           errorMessage ? 'border-error-500' : ''
         } ${icon ? 'pr-12' : ''} ${className}`}
         placeholder={label}
-        {...inputBaseProps}
+        {...textareaBaseProps}
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'transparent transparent',
+        }}
       />
+
       {errorMessage && !validators && (
         <span className="text-error-500 text-2xs flex items-center gap-1">
           <Icon name="info" className="w-3 h-3 -mt-[1.5px]" /> {errorMessage}
@@ -69,7 +72,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
           }`}
         >
           {validators?.map((validator, index) => {
-            const isValid = validator.regex.test(`${inputBaseProps.value}`);
+            const isValid = validator.regex.test(`${textareaBaseProps.value}`);
             return (
               <span
                 key={index}
@@ -87,11 +90,11 @@ export const BaseInput: React.FC<BaseInputProps> = ({
 
       {(icon || iconElement) && (
         <div
-          className={`absolute text-mauve-900 end-4 bottom-2.5 flex items-center ps-4 pointer-events-none ${
-            errorMessage && 'bottom-8 text-error-500'
+          className={`absolute text-mauve-900 end-4 top-10 flex items-center ps-4 pointer-events-none ${
+            errorMessage && 'text-error-500'
           }`}
         >
-          {!!icon && <Icon name={icon} className={`w-6 h-6 `} />}
+          {!!icon && <Icon name={icon} className={`w-6 h-6`} />}
           {!!iconElement && iconElement}
         </div>
       )}
