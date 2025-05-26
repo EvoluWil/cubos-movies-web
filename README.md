@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cubos Movies Web
 
-## Getting Started
+Aplicação web para gerenciamento e visualização de filmes, construída com Next.js, React, Tailwind CSS e TypeScript.
 
-First, run the development server:
+## ✨ Funcionalidades
+
+- Autenticação de usuários (login, cadastro, recuperação e redefinição de senha)
+- Listagem, busca e filtragem de filmes
+- Visualização de detalhes do filme
+- Adição de novos filmes (protegido)
+- Temas claro/escuro com detecção automática do sistema
+- Componentes reutilizáveis e estilização com Tailwind CSS
+
+## 🚀 Tecnologias
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Yup](https://github.com/jquense/yup) (validação)
+- [React Toastify](https://fkhadra.github.io/react-toastify/) (notificações)
+
+## 📦 Instalação
+
+```bash
+npm install
+# ou
+yarn install
+```
+
+## 🏃 Rodando localmente
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Estrutura de Pastas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app` — Rotas (públicas, protegidas, autenticação)
+- `src/components` — Componentes reutilizáveis (atoms, molecules, organisms)
+- `src/services` — Serviços de API
+- `src/hooks` — Hooks customizados
+- `src/constants` — Constantes globais
+- `src/validators` — Validações e schemas
 
-## Learn More
+## 🛡️ Autenticação
 
-To learn more about Next.js, take a look at the following resources:
+- Login, cadastro, recuperação e redefinição de senha
+- Fluxo completo: esqueci minha senha → validação de código → redefinir senha
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Temas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Suporte a tema claro/escuro
+- Detecta preferência do sistema
+- Persistência da escolha do usuário
 
-## Deploy on Vercel
+## 📝 Scripts úteis
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `dev` — Inicia o servidor de desenvolvimento
+- `build` — Gera build de produção
+- `start` — Inicia o servidor em produção
+- `lint` — Lint do código
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 Licença
+
+MIT
