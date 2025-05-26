@@ -2,7 +2,7 @@ import { BaseSelectOption } from '@/components/atoms/base-select/base-select';
 import { BaseModal } from '@/components/molecules/base-modal/base-modal';
 import { SelectInput } from '@/components/molecules/select-input/select-input';
 import { TextInput } from '@/components/molecules/text-input/text-input';
-import { genreService } from '@/services/genre.service';
+import { languageService } from '@/services/language.service';
 import { formatSelectOption } from '@/utils/select-option';
 import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
@@ -19,16 +19,21 @@ export const ModalFilter: React.FC<ModalFilterProps> = ({
   onClose,
   loading,
 }) => {
-  const [genres, setGenres] = useState<BaseSelectOption[]>([]);
+  const [languageOptions, setLanguageOptions] = useState<BaseSelectOption[]>(
+    [],
+  );
 
   const { control } = useFormContext<FiltersFormDto>();
 
   const getSelectOptions = async () => {
-    const result = await genreService.getAll();
+    const result = await languageService.getAll();
     if (!result) return [];
 
-    const formattedGenres = formatSelectOption(result, 'id', 'name');
-    setGenres(formattedGenres);
+    const formattedLanguages = formatSelectOption(result, 'id', 'name');
+    setLanguageOptions([
+      { value: '', label: 'Selecione um idioma' },
+      ...formattedLanguages,
+    ]);
   };
 
   useEffect(() => {
@@ -75,11 +80,11 @@ export const ModalFilter: React.FC<ModalFilterProps> = ({
           />
         </div>
         <SelectInput
-          label="Gênero do filme"
-          name="genre"
-          placeholder="Selecione um gênero"
+          label="Idioma"
+          name="languageId"
+          placeholder="Selecione um idioma"
           control={control}
-          options={genres}
+          options={languageOptions}
         />
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
           <TextInput

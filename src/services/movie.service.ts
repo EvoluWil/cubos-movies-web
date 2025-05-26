@@ -9,7 +9,7 @@ type GetMoviesResponse = {
 };
 
 export const queryMovies: Query = {
-  select: 'all',
+  select: 'title coverUrl rating',
   limit: 10,
   page: 1,
   sort: {
@@ -21,7 +21,7 @@ export const queryMovies: Query = {
 class MovieService {
   async getAll(query = queryMovies): Promise<GetMoviesResponse> {
     const { data } = await api.get<GetMoviesResponse>('/movies', {
-      params: { query },
+      params: query,
     });
     return data;
   }

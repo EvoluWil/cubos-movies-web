@@ -41,7 +41,11 @@ export const Pagination = ({
 
   return (
     <div className="flex items-center gap-2">
-      <Button icon="chevron-left" disabled={currentPage === 1}></Button>
+      <Button
+        icon="chevron-left"
+        disabled={currentPage === 1}
+        onClick={() => onPageChange(currentPage - 1)}
+      />
 
       {getPages().map((page, index) => (
         <Button

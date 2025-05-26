@@ -49,6 +49,8 @@ export const ListMovies = ({ movies, total }: ListMoviesProps) => {
     resolver: yupResolver(addMovieFormSchema as any),
   });
 
+  const currentPage = formFilter.watch('page');
+
   const handleAddMovie = async (data: AddMovieFormDto) => {
     setLoading(true);
     const result = await movieService.create({
@@ -73,22 +75,15 @@ export const ListMovies = ({ movies, total }: ListMoviesProps) => {
   const handleFilter = async (data: FiltersFormDto) => {
     const query: Query = {
       ...queryMovies,
-      filter: [
-        {
-          path: 'title',
-          operator: 'contains',
-          value: data.term,
-          insensitive: true,
-        },
-      ],
+      filter: [],
     };
 
     if (data.term) {
       const textFilterKeys = [
         'title',
-        'description',
+        'promotionalText',
         'synopsis',
-        'original_title',
+        'originalTitle',
       ];
       query.filter?.push({
         or: [
@@ -106,10 +101,56 @@ export const ListMovies = ({ movies, total }: ListMoviesProps) => {
       });
     }
 
+    if (data.languageId) {
+      query.filter?.push({
+        path: 'languageId',
+        operator: 'equals',
+        value: data.languageId,
+        filterGroup: 'and',
+      });
+    }
+
+    if (data.startDate) {
+      query.filter?.push({
+        path: 'releaseAt',
+        operator: 'gte',
+        value: new Date(formatDateToSend(data.startDate)),
+        filterGroup: 'and',
+      });
+    }
+
+    if (data.endDate) {
+      query.filter?.push({
+        path: 'releaseAt',
+        operator: 'lte',
+        value: new Date(formatDateToSend(data.endDate)),
+        filterGroup: 'and',
+      });
+    }
+
+    if (data.startDuration) {
+      query.filter?.push({
+        path: 'duration',
+        operator: 'gte',
+        value: Number(data.startDuration),
+        filterGroup: 'and',
+      });
+    }
+
+    if (data.endDuration) {
+      query.filter?.push({
+        path: 'duration',
+        operator: 'lte',
+        value: Number(data.endDuration),
+        filterGroup: 'and',
+      });
+    }
+
     if (data?.page > 1) {
       query.page = data.page;
     }
 
+    console.log(query);
     setLoading(true);
     const { movies, total } = await movieService.getAll(query);
     if (movies) {
@@ -158,7 +199,7 @@ export const ListMovies = ({ movies, total }: ListMoviesProps) => {
 
       <div className="flex items-center justify-center">
         <Pagination
-          currentPage={1}
+          currentPage={currentPage}
           totalPages={Math.ceil(totalItems / 10)}
           onPageChange={(newPage) => {
             formFilter.setValue('page', newPage);

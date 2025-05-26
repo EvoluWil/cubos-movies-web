@@ -6,7 +6,7 @@ export type FiltersFormDto = {
   page: number;
   startDate: string;
   endDate: string;
-  genre: string;
+  languageId: string;
   startDuration: string;
   endDuration: string;
 };
@@ -16,7 +16,7 @@ export const filterFormInitialValues: FiltersFormDto = {
   page: 1,
   startDate: '',
   endDate: '',
-  genre: '',
+  languageId: '',
   startDuration: '',
   endDuration: '',
 };
@@ -50,7 +50,7 @@ export const filterFormSchema = yup.object().shape({
     })
     .optional()
     .nullable(),
-  genre: yup.string().optional().nullable(),
+  languageId: yup.string().optional().nullable(),
   startDuration: yup.string().optional().nullable(),
   endDuration: yup.string().optional().nullable(),
 });
