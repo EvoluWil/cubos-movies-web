@@ -6,6 +6,7 @@ import { signIn } from 'next-auth/react';
 
 type SignInResponse = {
   user: User;
+  token: string;
 };
 
 type Credentials = {

@@ -49,9 +49,9 @@ export default async function RootLayout({
       >
         <ToastContainer />
         <Header />
-        <div className="bg-mauve-10 relative">
+        <div className="relative bg-mauve-10 mt-[72px]">
           <BgImageGradient />
-          <div className="relative h-full z-10 p-4">{children}</div>
+          <div className="h-full relative">{children}</div>
         </div>
         <Footer />
       </body>

@@ -1,7 +1,7 @@
 'use client';
 
-import { encrypt } from '@/app/utils/crypto';
 import { authService } from '@/services/auth.service';
+import { encrypt } from '@/utils/crypto';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';

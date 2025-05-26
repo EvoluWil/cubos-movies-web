@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { PropsWithChildren } from 'react';
-import { getUserSession } from '../utils/session';
+import { getUserSession } from '../../utils/session';
 
 export default async function AuthLayout({ children }: PropsWithChildren) {
   const user = await getUserSession();
@@ -9,5 +9,5 @@ export default async function AuthLayout({ children }: PropsWithChildren) {
     return redirect('/movies');
   }
 
-  return <>{children}</>;
+  return <div className="p-4">{children}</div>;
 }

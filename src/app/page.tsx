@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { getUserSession } from './utils/session';
+import { getUserSession } from '../utils/session';
 
 export default async function PrivateLayout() {
   const user = await getUserSession();

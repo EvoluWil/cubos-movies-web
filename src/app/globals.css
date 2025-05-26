@@ -130,3 +130,26 @@ textarea:focus, input:focus, select:focus {
 .banner-shadow-gradient {
   background: linear-gradient(180deg, rgba(0 0 0 / 0) 0%, rgba(0 0 0 / 0.5) 50%, rgb(0 0 0) 100%);
 }
+
+.movie-detail-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "poster"
+    "title"
+    "popularity"
+    "details"
+    "trailer";
+}
+
+@media (min-width: 767px) {
+  .movie-detail-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "title title title"
+      "poster popularity popularity"
+      "poster details details"
+      "trailer trailer trailer";
+  }
+}
