@@ -71,14 +71,6 @@ class AuthService {
 
     return data;
   }
-
-  async updatePassword(securityFormData: any) {
-    const { data } = await api.put<User>(
-      '/auth/update-password',
-      securityFormData,
-    );
-    return data;
-  }
 }
 
 export const authService = new AuthService();

@@ -37,7 +37,7 @@ export const ImagePicker = <T extends FieldValues>({
   } = useController({ name, control, rules, shouldUnregister });
 
   const preview = useMemo(() => {
-    if (field.value?.startsWith?.('data:image')) return field.value; // base64
+    if (field.value?.startsWith?.('data:image')) return field.value;
     if (defaultValue) return defaultValue;
     return null;
   }, [field.value, defaultValue]);

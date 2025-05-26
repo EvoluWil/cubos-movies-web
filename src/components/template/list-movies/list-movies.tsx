@@ -150,7 +150,6 @@ export const ListMovies = ({ movies, total }: ListMoviesProps) => {
       query.page = data.page;
     }
 
-    console.log(query);
     setLoading(true);
     const { movies, total } = await movieService.getAll(query);
     if (movies) {
