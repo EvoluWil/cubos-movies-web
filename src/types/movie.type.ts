@@ -6,14 +6,15 @@ export type Movie = {
   id: string;
   title: string;
   originalTitle: string;
-  description: string;
+  promotionalText: string;
   synopsis: string;
   coverUrl: string;
   videoUrl: string;
+  backdropUrl: string;
   duration: number;
   popularity: number;
   votes: number;
-  quality: number;
+  rating: number;
   budget: number;
   revenue: number;
   releaseAt: string;
