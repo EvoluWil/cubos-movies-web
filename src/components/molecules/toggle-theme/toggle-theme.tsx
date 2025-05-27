@@ -19,15 +19,19 @@ const TOGGLE_THEME_BUTTON_VARIANT: Record<ThemeEnum, ThemeButtonVariantType> = {
 };
 
 export const ToggleTheme = () => {
-  const [stated, setStated] = useState(false);
+  const [started, setStarted] = useState(false);
   const { toggleTheme, theme } = useTheme();
 
   useEffect(() => {
-    setStated(true);
+    setStarted(true);
   }, []);
 
-  if (!stated) {
-    return null;
+  if (
+    !started ||
+    typeof TOGGLE_THEME_ICON[theme] !== 'string' ||
+    typeof TOGGLE_THEME_BUTTON_VARIANT[theme] !== 'string'
+  ) {
+    return <></>;
   }
 
   return (
