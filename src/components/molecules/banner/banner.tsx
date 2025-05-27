@@ -33,7 +33,7 @@ export const Banner: React.FC<BannerProps> = ({ movie, onClick }) => {
           {movie.title}
         </h3>
         <p className="text-[clamp(0.5rem,1.8vw,0.8rem)] text-[#B4B4B4] mt-2 opacity-0 transition duration-300 group-hover:opacity-100">
-          {movie.genres.map((genre) => genre.name).join(', ')}
+          {movie.genres?.map((genre) => genre.name)?.join(', ')}
         </p>
       </div>
     </div>
