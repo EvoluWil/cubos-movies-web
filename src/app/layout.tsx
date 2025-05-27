@@ -1,11 +1,11 @@
 import { BgImageGradient } from '@/components/atoms/bg-image-gradient/bg-image-gradient';
 import { Footer } from '@/components/organisms/footer/footer';
-import { Header } from '@/components/organisms/header.tsx/header';
-import { THEME_STORAGE_KEY, ThemeEnum } from '@/constants/theme';
+import { Header } from '@/components/organisms/header/header';
+import AuthProvider from '@/providers/auth';
 import type { Metadata } from 'next';
 import { Inter, Montserrat, Roboto } from 'next/font/google';
-import { cookies } from 'next/headers';
 import { ToastContainer } from 'react-toastify';
+import '../../public/icons/style.css';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -36,24 +36,21 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const theme = cookieStore.get(THEME_STORAGE_KEY)?.value || ThemeEnum.DARK;
-
   return (
     <html
       lang="pt-BR"
       className={`${montserrat.variable} ${roboto.variable} ${inter.variable} antialiased`}
     >
-      <body
-        className={`font-sans bg-mauve-10 ${theme} flex flex-col min-h-screen`}
-      >
-        <ToastContainer />
-        <Header />
-        <div className="relative bg-mauve-10 mt-[72px]">
-          <BgImageGradient />
-          <div className="h-full relative">{children}</div>
-        </div>
-        <Footer />
+      <body className={`font-sans bg-mauve-10 flex flex-col min-h-screen`}>
+        <AuthProvider>
+          <ToastContainer />
+          <Header />
+          <div className="relative bg-mauve-10 mt-[72px]">
+            <BgImageGradient />
+            <div className="h-full relative">{children}</div>
+          </div>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
