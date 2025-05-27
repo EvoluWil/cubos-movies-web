@@ -47,8 +47,10 @@ export const DrawerAddMovie: React.FC<DrawerAddMovieProps> = ({
   };
 
   useEffect(() => {
-    getSelectOptions();
-  }, []);
+    if (open) {
+      getSelectOptions();
+    }
+  }, [open]);
 
   return (
     <BaseDrawer

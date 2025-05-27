@@ -37,8 +37,10 @@ export const ModalFilter: React.FC<ModalFilterProps> = ({
   };
 
   useEffect(() => {
-    getSelectOptions();
-  }, []);
+    if (open) {
+      getSelectOptions();
+    }
+  }, [open]);
 
   return (
     <BaseModal
