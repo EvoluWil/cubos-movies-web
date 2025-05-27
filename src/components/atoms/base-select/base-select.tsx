@@ -57,8 +57,8 @@ export const BaseSelect: React.FC<BaseSelectProps> = ({
         ))}
       </select>
       {errorMessage && (
-        <span className="text-error-500 text-2xs flex items-center gap-1">
-          <Icon name="info" className="w-3 h-3 -mt-[1.5px]" /> {errorMessage}
+        <span className="text-error-500 text-2xs flex items-start gap-1">
+          <Icon name="info" className="-mt-1 !text-base" /> {errorMessage}
         </span>
       )}
 
@@ -70,7 +70,7 @@ export const BaseSelect: React.FC<BaseSelectProps> = ({
         {!!iconElement ? (
           iconElement
         ) : (
-          <Icon name="chevron-down" className={`w-6 h-6 `} />
+          <Icon name="chevron-down" className={`!text-sm !text-mauve-700`} />
         )}
       </div>
     </div>

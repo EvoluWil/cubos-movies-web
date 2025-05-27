@@ -80,7 +80,7 @@ export const MultiSelectInput = <T extends FieldValues>({
               name={option.label}
               key={option.value}
               onClick={() => handleRemove(item)}
-              icon={<Icon name="close" className="w-3 h-3 !text-error-500" />}
+              icon={<Icon name="close" className="!text-error-500" />}
             />
           );
         })}

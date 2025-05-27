@@ -103,7 +103,7 @@ export const ImagePicker = <T extends FieldValues>({
 
       {error?.message && (
         <span className="text-error-500 text-2xs flex items-center gap-1 mt-1">
-          <Icon name="info" className="w-3 h-3 -mt-[1.5px]" /> {error.message}
+          <Icon name="info" className="!text-base" /> {error.message}
         </span>
       )}
     </div>

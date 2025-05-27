@@ -5,7 +5,6 @@ import AuthProvider from '@/providers/auth';
 import type { Metadata } from 'next';
 import { Inter, Montserrat, Roboto } from 'next/font/google';
 import { ToastContainer } from 'react-toastify';
-import '../../public/icons/style.css';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -41,6 +40,12 @@ export default async function RootLayout({
       lang="pt-BR"
       className={`${montserrat.variable} ${roboto.variable} ${inter.variable} antialiased`}
     >
+      <head>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`font-sans bg-mauve-10 flex flex-col min-h-screen`}>
         <AuthProvider>
           <ToastContainer />

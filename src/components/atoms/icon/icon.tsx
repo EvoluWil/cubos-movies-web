@@ -1,15 +1,4 @@
-import LtiCamera from '@/assets/icons/camera.svg';
-import LtiChevronDown from '@/assets/icons/chevron_down.svg';
-import LtiChevronLeft from '@/assets/icons/chevron_left.svg';
-import LtiChevronRight from '@/assets/icons/chevron_right.svg';
-import LtiChevronUp from '@/assets/icons/chevron_up.svg';
-import LtiClose from '@/assets/icons/close.svg';
-import LtiFilter from '@/assets/icons/filter.svg';
-import LtiInfo from '@/assets/icons/info.svg';
-import LtiMoon from '@/assets/icons/moon.svg';
-import LtiSearch from '@/assets/icons/search.svg';
-import LtiSpinner from '@/assets/icons/spinner.svg';
-import LtiSun from '@/assets/icons/sun.svg';
+import React from 'react';
 
 export type IconName =
   | 'chevron-down'
@@ -25,32 +14,30 @@ export type IconName =
   | 'close'
   | 'camera';
 
+enum IconNameEnum {
+  'chevron-down' = 'chevron_down',
+  'chevron-left' = 'chevron_left',
+  'chevron-right' = 'chevron_right',
+  'chevron-up' = 'chevron_up',
+  filter = 'tune',
+  moon = 'mode_night',
+  search = 'search',
+  sun = 'light_mode',
+  spinner = 'autorenew',
+  info = 'info',
+  close = 'close',
+  camera = 'photo_camera',
+}
+
 type IconProps = {
   name: IconName;
-  size?: number;
-  color?: string;
   className?: string;
 };
 
-const iconsMap: Record<
-  IconName,
-  React.FC<{ size?: number; color?: string; className?: string }>
-> = {
-  'chevron-down': LtiChevronDown,
-  'chevron-left': LtiChevronLeft,
-  'chevron-right': LtiChevronRight,
-  'chevron-up': LtiChevronUp,
-  filter: LtiFilter,
-  moon: LtiMoon,
-  search: LtiSearch,
-  sun: LtiSun,
-  info: LtiInfo,
-  spinner: LtiSpinner,
-  close: LtiClose,
-  camera: LtiCamera,
-};
-
-export const Icon: React.FC<IconProps> = ({ name, className }) => {
-  const Component = iconsMap[name];
-  return <Component className={className} />;
+export const Icon: React.FC<IconProps> = ({ name, className = '' }) => {
+  return (
+    <i className={`material-icons ${className}`} aria-hidden="true">
+      {IconNameEnum[name]}
+    </i>
+  );
 };

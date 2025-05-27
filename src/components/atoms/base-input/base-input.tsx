@@ -57,8 +57,8 @@ export const BaseInput: React.FC<BaseInputProps> = ({
         {...inputBaseProps}
       />
       {errorMessage && !validators && (
-        <span className="text-error-500 text-2xs flex items-center gap-1">
-          <Icon name="info" className="w-3 h-3 -mt-[1.5px]" /> {errorMessage}
+        <span className="text-error-500 text-2xs flex items-top gap-1">
+          <Icon name="info" className="!text-base -mt-1" /> {errorMessage}
         </span>
       )}
 
@@ -77,7 +77,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
                   isValid,
                 )}`}
               >
-                <Icon name="info" className="w-3 h-3 mt-[1.5px]" />
+                <Icon name="info" className="!text-sm -mt-1" />
                 <span>{validator.message}</span>
               </span>
             );
@@ -91,7 +91,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
             errorMessage && 'bottom-8 text-error-500'
           }`}
         >
-          {!!icon && <Icon name={icon} className={`w-6 h-6 `} />}
+          {!!icon && <Icon name={icon} className={`w-6 h-6 !text-base`} />}
           {!!iconElement && iconElement}
         </div>
       )}

@@ -11,7 +11,6 @@ export type BaseTextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   icon?: IconName;
   iconElement?: JSX.Element;
   errorMessage?: string;
-  validators?: BaseTextareaValidators[];
 };
 
 export const BaseTextarea: React.FC<BaseTextareaProps> = ({
@@ -20,21 +19,8 @@ export const BaseTextarea: React.FC<BaseTextareaProps> = ({
   iconElement,
   icon,
   errorMessage,
-  validators,
   ...textareaBaseProps
 }) => {
-  const getValidatorColor = (isValid: boolean) => {
-    if (isValid) {
-      return 'text-success-500';
-    }
-
-    if (!errorMessage) {
-      return 'text-mauve-800';
-    }
-
-    return 'text-error-500';
-  };
-
   return (
     <div className="flex flex-col gap-2 w-full relative">
       {label && (
@@ -59,32 +45,9 @@ export const BaseTextarea: React.FC<BaseTextareaProps> = ({
         }}
       />
 
-      {errorMessage && !validators && (
-        <span className="text-error-500 text-2xs flex items-center gap-1">
-          <Icon name="info" className="w-3 h-3 -mt-[1.5px]" /> {errorMessage}
-        </span>
-      )}
-
-      {validators && (
-        <span
-          className={`text-2xs flex flex-col gap-1 mt-1 ${
-            !errorMessage ? '!text-mauve-500' : ''
-          }`}
-        >
-          {validators?.map((validator, index) => {
-            const isValid = validator.regex.test(`${textareaBaseProps.value}`);
-            return (
-              <span
-                key={index}
-                className={`flex items-start gap-1 ${getValidatorColor(
-                  isValid,
-                )}`}
-              >
-                <Icon name="info" className="w-3 h-3 mt-[1.5px]" />
-                <span>{validator.message}</span>
-              </span>
-            );
-          })}
+      {errorMessage && (
+        <span className="text-error-500 text-2xs flex items-start gap-1">
+          <Icon name="info" className="!text-base -mt-1" /> {errorMessage}
         </span>
       )}
 
